@@ -3,57 +3,67 @@ public class Main
 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean playAgain = true;
+        String playerA = "";
+        String playerB = "";
+        String nextLine = "";
+        boolean done = false;
 
-        //here it is
-        while (playAgain) {
-            System.out.print("Player A, enter your move [R P S]: ");
-            String playerA = scanner.nextLine(); //asks the user the question
-            playerA = playerA.toUpperCase(); // puts in the right form
+        do {
+            System.out.println("Player A Enter your move [R P S]: ");
+            playerA = scanner.nextLine();
+            System.out.println("Player B Enter your move [R P S]: ");
+            playerB = scanner.nextLine();
 
-            while (!isValidMove(playerA)) {
-                System.out.print("Invalid move. Please enter [R P S]: "); // forces to do r p s
-                playerA = scanner.nextLine();
-                playerA = playerA.toUpperCase();
+            if (playerA.equals("R") || playerA.equals("r")) {
+                if (playerB.equals("R"))
+                {
+                    System.out.println("Rock vs Rock, it is a Tie!");
+                }
+                else if (playerB.equals("P") || playerB.equals("p"))
+                {
+                    System.out.println("Paper beats rock so Player B Wins!");
+                }
+                else {
+                    System.out.println("Rock breaks scissors, so player A Wins!");
+                }
+            }
+            else if (playerA.equals("P") || playerA.equals("p"))
+            {
+                if (playerB.equals("R") || playerB.equals("r")) {
+                    System.out.println("Paper beats Rock, so Player A Wins!");
+                } else if (playerB.equals("P") || playerB.equals("p")) {
+                    System.out.println("Paper vs Paver, it is a Tie!");
+                } else {
+                    System.out.println("Scissors cuts paper, so Player B Wins!");
+                }
+            }
+            else if (playerA.equals("S") || playerA.equals("s"))
+            {
+                if (playerB.equals("R") || playerB.equals("r"))
+                {
+                    System.out.println("Rock breaks scissors, so Player A Wins!");
+                }
+                else if (playerB.equals("P") || playerB.equals("p"))
+                {
+                    System.out.println("Scissors cuts paper, so Player A Wins!");
+                }
+                else
+                {
+                    System.out.println("Scissors vs scissors, it is a Tie!");
+                }
+            }
+            else
+            {
+                System.out.print("Please enter a Valid input and try again!");
+                nextLine = scanner.nextLine();
+                done = true;
             }
 
-            System.out.print("Player B, enter your move [R P S]: "); //repeat
-            String playerB = scanner.nextLine();
-            playerB = playerB.toUpperCase();
-
-            while (!isValidMove(playerB)) {
-                System.out.print("Invalid move. Please enter [R P S]: "); //same thing
-                playerB = scanner.nextLine();
-                playerB = playerB.toUpperCase();
-            }
-
-            // Determine the winner
-            String result = determineWinner(playerA, playerB); // shows the winner of rps
-
-            // Display result
-            System.out.println(result);
-
-            // Play again?
-            System.out.print("Do you want to play again? [Y/N]: ");
-            String playAgainInput = scanner.nextLine();
-            playAgain = playAgainInput.equalsIgnoreCase("Y");
+            System.out.println("Would you like to play again? [Y/N]: ");
+            nextLine = scanner.nextLine();
+            done = true;
         }
-
-        System.out.println("Thanks for playing!");
+        while (done);
         scanner.close();
-    }
-
-    private static boolean isValidMove(String move) {
-        return move.equals("R") || move.equals("P") || move.equals("S");
-    } // actual code to know who wins
-
-    private static String determineWinner(String moveA, String moveB) {
-        if (moveA.equals(moveB)) {
-            return "It's a tie!";
-        } else if ((moveA.equals("R") && moveB.equals("S")) || (moveA.equals("S") && moveB.equals("P")) || (moveA.equals("P") && moveB.equals("R"))) {
-            return "Player A wins!";
-        } else {
-            return "Player B wins!";
-        }
     }
 }
