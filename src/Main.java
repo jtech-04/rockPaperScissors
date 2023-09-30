@@ -9,12 +9,13 @@ public class Main
         boolean done = false;
 
         do {
-            System.out.println("Player A Enter your move [R P S]: ");
+            System.out.println("Player A Enter your move [R P S]: "); // asking both players what they want
             playerA = scanner.nextLine();
             System.out.println("Player B Enter your move [R P S]: ");
             playerB = scanner.nextLine();
 
-            if (playerA.equals("R") || playerA.equals("r")) {
+            if (playerA.equals("R") || playerA.equals("r"))  // runs through the different answers
+            {
                 if (playerB.equals("R"))
                 {
                     System.out.println("Rock vs Rock, it is a Tie!");
@@ -23,17 +24,23 @@ public class Main
                 {
                     System.out.println("Paper beats rock so Player B Wins!");
                 }
-                else {
+                else
+                {
                     System.out.println("Rock breaks scissors, so player A Wins!");
                 }
             }
             else if (playerA.equals("P") || playerA.equals("p"))
             {
-                if (playerB.equals("R") || playerB.equals("r")) {
+                if (playerB.equals("R") || playerB.equals("r"))
+                {
                     System.out.println("Paper beats Rock, so Player A Wins!");
-                } else if (playerB.equals("P") || playerB.equals("p")) {
+                }
+                else if (playerB.equals("P") || playerB.equals("p"))
+                {
                     System.out.println("Paper vs Paver, it is a Tie!");
-                } else {
+                }
+                else
+                {
                     System.out.println("Scissors cuts paper, so Player B Wins!");
                 }
             }
@@ -52,14 +59,14 @@ public class Main
                     System.out.println("Scissors vs scissors, it is a Tie!");
                 }
             }
-            else
+            else // forces the correct variable
             {
                 System.out.print("Please enter a Valid input and try again!");
                 nextLine = scanner.nextLine();
                 done = true;
             }
 
-            System.out.println("Would you like to play again? [Y/N]: ");
+            System.out.println("Would you like to play again? [Y/N]: "); //asking to play again
             nextLine = scanner.nextLine();
             done = true;
         }
