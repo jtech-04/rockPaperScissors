@@ -13,7 +13,7 @@ public class Main
             playerA = scanner.nextLine();
             System.out.println("Player B Enter your move [R P S]: ");
             playerB = scanner.nextLine();
-
+//here you go//
             if (playerA.equals("R") || playerA.equals("r"))  // runs through the different answers
             {
                 if (playerB.equals("R"))
